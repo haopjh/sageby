@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AnswerOptions" syncable="YES">
+        <attribute name="option" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="questions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Questions" inverseName="answeroptions" inverseEntity="Questions" syncable="YES"/>
+    </entity>
+    <entity name="Answers" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questions" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Questions" inverseName="answers" inverseEntity="Questions" syncable="YES"/>
+    </entity>
+    <entity name="Questions" syncable="YES">
+        <attribute name="question_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="question_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="question_type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="task_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="answeroptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerOptions" inverseName="questions" inverseEntity="AnswerOptions" syncable="YES"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answers" inverseName="questions" inverseEntity="Answers" syncable="YES"/>
+        <relationship name="task" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="questions" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Task" syncable="YES">
+        <attribute name="credit_amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="current_participants" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="maximum_participants" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="merchant_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="survey_image_file" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="task_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="task_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="time_needed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Questions" inverseName="task" inverseEntity="Questions" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="task" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="sessionID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_credit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
+        <relationship name="vouchers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vouchers" inverseName="user" inverseEntity="Vouchers" syncable="YES"/>
+    </entity>
+    <entity name="Vouchers" syncable="YES">
+        <attribute name="qr_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voucher_credit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="voucher_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="voucher_serial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voucher_type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="vouchers" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AnswerOptions" positionX="351" positionY="207" width="128" height="75"/>
+        <element name="Answers" positionX="160" positionY="12" width="128" height="60"/>
+        <element name="Questions" positionX="205" positionY="339" width="128" height="120"/>
+        <element name="Task" positionX="-29" positionY="297" width="128" height="195"/>
+        <element name="User" positionX="-20" positionY="171" width="128" height="90"/>
+        <element name="Vouchers" positionX="-36" positionY="-9" width="128" height="120"/>
+    </elements>
+</model>
